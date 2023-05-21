@@ -1,0 +1,68 @@
+{
+    "intents": [
+      
+  {
+  "tag": "interviews",
+  "patterns": [
+    "Types of interview?",
+    "interview types "
+    
+  ],
+  "responses": [
+    "person to person interview panel interview phone call interview"
+  ]
+  },
+  {
+    "tag": "interview",
+    "patterns": [
+     "how to face an interview"
+      
+    ],
+    "responses": [
+      "Tell the truth. ...Listen carefully to the interviewer. ... Never slight a teacher, friend, employer, or your university. ...  Watch your grammar. ... Be prepared for personal questions. ... Wait for the interviewer to mention salary and benefits. ...  Don't expect a job offer at the first interview. ...  Close on a positive, enthusiastic note."
+    ]
+    }
+  ,
+  {
+    "tag": "level",
+    "patterns": [
+     "Easy",
+     "Medium",
+     "Hard"
+      
+    ],
+    "responses": [
+     "Yeah your questions are on the way"
+    ]
+    }
+    ,
+    {
+      "tag": "greetings",
+      "patterns": [
+        "hi",
+        "hello",
+        "Hey"
+        
+      ],
+      "responses": [
+        "hi.. iam your interview bot how can i help you?",
+        "hi.. iam your virtual assistant how can i help you?"
+      ]
+      }
+      ,
+      {
+        "tag": "goodbye",
+        "patterns": [
+          "bye",
+          "goodbye"
+          
+        ],
+        "responses": [
+          "See you later, thanks for visiting",
+          "have a nice day",
+          "Bye! Come back again soon."
+        ]
+        }
+  ]
+  }
+  

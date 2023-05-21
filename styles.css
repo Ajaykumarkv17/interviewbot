@@ -1,0 +1,142 @@
+
+body {
+    background-image: url('./images/chatbot-robot-conducting-interview-human-demonstration-its-abilities-created-generative-ai-272691729.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.chatbot-container {
+    width: 400px;
+    margin: 20px auto;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.chatbot-header {
+    background-color: lightcoral;
+    color:blue;
+    padding: 20px;
+    text-align: center;
+}
+
+.chatbot-header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.chatbot-body {
+    background-color:lavenderblush;
+    padding: 20px;
+    height: 300px;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #bdbdbd #f4f4f4;
+}
+
+.chatbot-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chatbot-body::-webkit-scrollbar-track {
+    background: mediumspringgreen;
+}
+
+.chatbot-body::-webkit-scrollbar-thumb {
+    background-color: #bdbdbd;
+    border-radius: 3px;
+}
+
+.input-container {
+    background-color: #f4f4f4;
+    padding: 10px;
+    display: flex;
+}
+
+.input-container input[type="text"] {
+    flex-grow: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+}
+
+.input-container button {
+    background-color: #00bfa5;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.input-container button:hover {
+    background-color: blueviolet;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+.user-message, .bot-message {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.user-message {
+    background-color: red;
+    align-self: flex-start;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+}
+
+.bot-message {
+    background-color: #00bfa5;
+    color: #fff;
+    align-self: flex-end;
+    animation-name: slideIn;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+@keyframes slideIn {
+0% {
+    opacity: 0;
+    transform: translateY(20px);
+}
+100% {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+
+.bot-message:before {
+    content: '';
+    position: relative;
+    top: -3px;
+    left: -18px;
+    display: inline-block;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid #00bfa5;
+}
+
+.user-message:nth-child(2n) {
+    align-self: flex-end;
+}
+
+.bot-message:nth-child(2n+1) {
+    align-self: flex-start;
+}
