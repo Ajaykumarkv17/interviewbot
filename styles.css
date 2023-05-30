@@ -2,8 +2,10 @@
 body {
     background-image: url('./images/chatbot-robot-conducting-interview-human-demonstration-its-abilities-created-generative-ai-272691729.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+  
+    background-position: top;
+    backface-visibility: hidden;
+    visibility: visible;
     background-color: rgba(0, 0, 0, 0.5);
     font-family: Arial, sans-serif;
     margin: 0;
