@@ -142,3 +142,42 @@ body {
 .bot-message:nth-child(2n+1) {
     align-self: flex-start;
 }
+
+@media only screen and (max-width: 480px) {
+    .chatbot-container {
+        width: 100%;
+        margin: 20px auto;
+        border-radius: 0;
+    }
+    
+    .chatbot-header {
+        padding: 10px;
+        font-size: 20px;
+    }
+    
+    .chatbot-body {
+        height: 200px;
+    }
+    
+    .input-container {
+        padding: 5px;
+    }
+    
+    .input-container input[type="text"] {
+        padding: 6px;
+        border-radius: 10px;
+    }
+    
+    .input-container button {
+        padding: 6px 12px;
+        border-radius: 10px;
+        margin-left: 5px;
+    }
+    
+    .user-message,
+    .bot-message {
+        padding: 6px 12px;
+        border-radius: 10px;
+        margin-bottom: 5px;
+    }
+}
