@@ -10,7 +10,9 @@ import json
 import random
 
 app = Flask(__name__)
-
+@app.route("/")
+def index():
+    return render_template("index.html")
 # Load intents from intents.json file
 with open('intents.json') as file:
     intents = json.load(file)
