@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify,render_template
 from nltk import word_tokenize, pos_tag
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
