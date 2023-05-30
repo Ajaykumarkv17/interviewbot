@@ -10,7 +10,7 @@ import json
 import random
 
 app = Flask(__name__)
-
+CORS(app)
 # Load intents from intents.json file
 with open('intents.json') as file:
     intents = json.load(file)
@@ -137,5 +137,5 @@ def chat():
     return jsonify({'message': bot_response})
 
 if __name__ == '__main__':
-    CORS(app)
+
     app.run()
