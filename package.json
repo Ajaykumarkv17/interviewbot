@@ -1,0 +1,14 @@
+{
+  "name": "fresh-bot",
+  "version": "1.0.0",
+  "description": "Its a bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^9.22.1"
+  }
+}

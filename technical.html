@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Technical Test</title>
+    <style>
+    body {
+  font-family: Arial, sans-serif;
+  background-color: #f1f1f1;
+}
+
+.test-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.question-container {
+  margin-bottom: 20px;
+}
+
+.question {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.options input[type="radio"] {
+  margin-bottom: 10px;
+}
+
+button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+p#score {
+  font-weight: bold;
+  text-align: center;
+}
+
+a {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Technical Test</h1>
+        <div class="question-container">
+            <p class="question">Question 1: What is HTML?</p>
+            <div class="options">
+                <input type="radio" name="answer1" value="a"> a) Hyper Text Markup Language<br>
+                <input type="radio" name="answer1" value="b"> b) Home Tool Markup Language<br>
+                <input type="radio" name="answer1" value="c"> c) Hyperlinks and Text Markup Language<br>
+                <input type="radio" name="answer1" value="d"> d) None of the above<br>
+            </div>
+        </div>
+        <div class="question-container">
+            <p class="question">Question 2: What is CSS?</p>
+            <div class="options">
+                <input type="radio" name="answer2" value="a"> a) Cascading Style Scripts<br>
+                <input type="radio" name="answer2" value="b"> b) Cascading Style Sheets<br>
+                <input type="radio" name="answer2" value="c"> c) Cascading Styling System<br>
+                <input type="radio" name="answer2" value="d"> d) None of the above<br>
+            </div>
+        </div>
+        <div class="question-container">
+            <p class="question">Question 3: What is JavaScript?</p>
+            <div class="options">
+                <input type="radio" name="answer3" value="a"> a) A markup language<br>
+                <input type="radio" name="answer3" value="b"> b) A programming language<br>
+                <input type="radio" name="answer3" value="c"> c) A styling language<br>
+                <input type="radio" name="answer3" value="d"> d) None of the above<br>
+            </div>
+        </div>
+        <button onclick="evaluateTest()">Evaluate Test</button>
+        <p id="score"></p>
+        <p  style ="color:red" id="feedback"></p>
+        <a href="page.html">Go back to previous page</a>
+    </div>
+
+    <script>
+        function evaluateTest() {
+            var answer1 = getSelectedOptionValue("answer1");
+            var answer2 = getSelectedOptionValue("answer2");
+            var answer3 = getSelectedOptionValue("answer3");
+            var score = 0;
+
+            // Evaluate the answers
+            if (answer1 === "a") {
+                score += 1;
+            }
+            if (answer2 === "b") {
+                score += 1;
+            }
+            if (answer3 === "b") {
+                score += 1;
+            }
+
+            // Display the score
+            var scoreElement = document.getElementById("score");
+            scoreElement.textContent = "Your score: " + score + "/3" ;
+            if(score>=3){
+                var feedbackelement=document.getElementById("feedback");
+                feedbackelement.textContent="Your skills are Good!    Good to go";
+            }
+            if(score>1){
+                var feedbackelement=document.getElementById("feedback");
+                feedbackelement.textContent="Your skills are moderate!    keep practice";
+            }
+            else{
+                var feedbackelement=document.getElementById("feedback");
+                feedbackelement.textContent="Your skills are low!    keep on practicing";
+            }
+        }
+
+        function getSelectedOptionValue(questionName) {
+            var options = document.getElementsByName(questionName);
+            for (var i = 0; i < options.length; i++) {
+                if (options[i].checked) {
+                    return options[i].value;
+                }
+            }
+            return "";
+        }
+    </script>
+</body>
+</html>

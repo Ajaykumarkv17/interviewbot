@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interview Chatbot - Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:lightseagreen;
+        }
+
+        nav {
+            background-color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: palegreen;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+        }
+
+        .auth-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color:lightsalmon;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 100px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        p a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+        #wel{
+            border: 10px,10px,solid,black;
+            
+            color: red;
+            text-shadow: 5px,10px,gold ;
+            font-size: xx-large;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#login" onclick="showLoginForm()">Login</a></li>
+            <li><a href="#signup" onclick="showSignupForm()">Signup</a></li>
+        </ul>
+    </nav>
+   <div> <p id="wel">Welcome To Interview Chatbot.Get the best effort interview experience.</p></div>
+    <div class="auth-container">
+        <div id="login-container">
+            <h1>Login</h1>
+            <input type="email" id="email" placeholder="Email">
+            <input type="password" id="password" placeholder="Password">
+            <button onclick="login()">Login</button>
+            <div id="google-login-button"></div>
+            <p>Don't have an account? <a href="#signup" onclick="showSignupForm()">Sign up</a></p>
+        </div>
+
+        <div id="signup-container" class="hidden">
+            <h1>Sign Up</h1>
+            <input type="email" id="signup-email" placeholder="Email">
+            <input type="password" id="signup-password" placeholder="Password">
+            <button onclick="signup()">Sign Up</button>
+            <div id="google-signup-button"></div>
+            <p>Already have an account? <a href="#login" onclick="showLoginForm()">Login</a></p>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <script>
+        // Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyA9Dbe4nXwzZmBuWzxzrSrYRV9aXKMi1iE",
+            authDomain: "interviewbot-4d76b.firebaseapp.com",
+             projectId: "interviewbot-4d76b",
+             storageBucket: "interviewbot-4d76b.appspot.com",
+             messagingSenderId: "1007191484062",
+             appId: "1:1007191484062:web:f86ee28e5c7174a7353d8f",
+             measurementId: "G-Q912F5TX87"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        var authContainer = document.querySelector(".auth-container");
+        var loginContainer = document.getElementById("login-container");
+        var signupContainer = document.getElementById("signup-container");
+        var user;
+
+        // Show the login form and hide the signup form
+        function showLoginForm() {
+            loginContainer.style.display = "block";
+            signupContainer.style.display = "none";
+        }
+
+        // Show the signup form and hide the login form
+        function showSignupForm() {
+            loginContainer.style.display = "none";
+            signupContainer.style.display = "block";
+        }
+
+        // Perform user login using Firebase authentication
+        function login() {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then(function (userCredential) {
+                    // Login successful, redirect to the chatbot page
+                    user = userCredential.user;
+                    window.location.href = "page.html";
+                })
+                .catch(function (error) {
+                    // Handle login error
+                    console.error(error);
+                    alert("Login failed. Please check your email and password.");
+                });
+        }
+
+        // Perform user signup using Firebase authentication
+        function signup() {
+            var email = document.getElementById("signup-email").value;
+            var password = document.getElementById("signup-password").value;
+
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then(function (userCredential) {
+                    // Signup successful, redirect to the chatbot page
+                    user = userCredential.user;
+                    window.location.href = "page.html";
+                })
+                .catch(function (error) {
+                    // Handle signup error
+                    console.error(error);
+                    alert("Signup failed. Please try again.");
+                });
+        }
+
+        // Initialize Google Sign-In
+        function initGoogleSignIn() {
+            var googleLoginButton = document.getElementById("google-login-button");
+            var googleSignupButton = document.getElementById("google-signup-button");
+
+            google.accounts.id.initialize({
+                client_id: "1007191484062-h812fk7khvg6fh3bem4ut035deoaca83.apps.googleusercontent.com",
+                callback: handleGoogleSignIn,
+                auto_select: true
+            });
+
+            google.accounts.id.renderButton(googleLoginButton, {
+                theme: "filled_blue",
+                size: "large",
+                text: "Sign in with Google"
+            });
+
+            google.accounts.id.renderButton(googleSignupButton, {
+                theme: "filled_blue",
+                size: "large",
+                text: "Sign up with Google"
+            });
+        }
+
+        // Handle Google Sign-In response
+        function handleGoogleSignIn(response) {
+            var credential = firebase.auth.GoogleAuthProvider.credential(response.credential);
+
+            firebase.auth().signInWithCredential(credential)
+                .then(function (userCredential) {
+                    // Sign-in successful, redirect to the chatbot page
+                    user = userCredential.user;
+                    window.location.href = "page.html";
+                })
+                .catch(function (error) {
+                    // Handle sign-in error
+                    console.error(error);
+                    alert("Google sign-in failed. Please try again.");
+                });
+        }
+
+        // Initialize Google Sign-In on page load
+        window.onload = function () {
+            initGoogleSignIn();
+        };
+    </script>
+</body>
+</html>
